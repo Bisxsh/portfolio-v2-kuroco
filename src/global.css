@@ -1,11 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600&family=Roboto:wght@400;700;900&display=swap");
+
 :root {
-  --main-bg-color: #292c33;
+  --color-bg: #292c33;
   --color-darkest: #0d1b2a;
   --color-accent: #415a77;
   --color-grey: rgba(175, 175, 175, 0.6);
   --color-text: #e0e1dd;
   --color-gradient-ver: linear-gradient(180deg, #005aa7 0%, #e0e1dd 82.29%);
-  --color-gradient-hor: linear-gradient(90deg, #005aa7 0%, #e0e1dd 82.29%);
+  --color-gradient-hor: linear-gradient(90deg, #0089ff 0%, #e0e1dd 82.29%);
+  --font-hero-heading: 96px;
+  --font-heading: 64px;
+  --font-sub-heading: 36px;
+  --font-m: 24px;
+  --font-s: 20px;
+  --font-xs: 12px;
 }
 
 /* Box sizing rules */
@@ -42,10 +50,12 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--color-bg);
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-family: "Roboto Mono", monospace, sans-serif;
+  color: var(--color-text);
 }
 
 /* A elements that don't have a class get default styles */

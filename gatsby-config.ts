@@ -22,6 +22,22 @@ const config: GatsbyConfig = {
       },
       __key: "images",
     },
+    {
+      resolve: `gatsby-omni-font-loader`,
+      options: {
+        enableListener: true,
+        preconnect: [
+          `https://fonts.googleapis.com`,
+          `https://fonts.gstatic.com`,
+        ],
+        web: [
+          {
+            name: `Roboto Mono`,
+            file: `https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600&family=Roboto:wght@400;700;900&display=swap`,
+          },
+        ],
+      },
+    },
   ],
 };
 
