@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-scroll";
 
 type Props = {
   label: string;
@@ -8,7 +9,16 @@ type Props = {
 const MenuOption = (props: Props) => {
   return (
     <div>
-      <a href={props.link}>{props.label}</a>
+      <Link
+        activeClass="active"
+        className="link"
+        to={props.link}
+        spy={true}
+        smooth={true}
+        duration={500}
+      >
+        {props.label}
+      </Link>
     </div>
   );
 };
