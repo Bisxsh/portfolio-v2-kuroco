@@ -82,7 +82,11 @@ const Hero = (props: Props) => {
 
   return (
     <HeroContainer>
-      <header>
+      <motion.header
+        initial={{ opacity: 0, scale: 0.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+      >
         <h1 className="hero--heading">
           <span
             className={forenameHovered ? "highlighted" : ""}
@@ -103,7 +107,7 @@ const Hero = (props: Props) => {
           <span>{text}</span>
           <Cursor cursorColor="#e0e1dd" />
         </h2>
-      </header>
+      </motion.header>
       <BackgroundCircles />
       <ScrollPrompt />
     </HeroContainer>
