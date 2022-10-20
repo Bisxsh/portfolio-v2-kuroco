@@ -7,6 +7,7 @@ import { useState } from "react";
 import MouseContext from "../util/MouseContext";
 import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
+import Experience from "../components/experience/Experience";
 
 const IndexPage = () => {
   const [mouseHovering, setMouseHovering] = useState(false);
@@ -21,6 +22,9 @@ const IndexPage = () => {
         </section>
         <section>
           <About />
+        </section>
+        <section>
+          <Experience />
         </section>
       </main>
     </MouseContext.Provider>

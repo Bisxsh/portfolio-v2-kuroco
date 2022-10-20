@@ -12,7 +12,6 @@ const AboutContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 20vh;
-  margin-bottom: 100vh;
   max-width: 100vw;
   overflow: hidden;
   position: relative;
