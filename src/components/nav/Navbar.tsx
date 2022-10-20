@@ -19,8 +19,8 @@ const NavbarContainer = styled.div`
   max-width: 100vw;
 
   .logo {
-    width: max(40px, 5vw);
-    height: max(40px, 5vw);
+    width: max(40px, 3vw);
+    height: max(40px, 3vw);
     cursor: pointer;
   }
 

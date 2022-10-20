@@ -6,6 +6,7 @@ import ExperienceListing from "./components/ExperienceListing";
 
 const ExperienceContainer = styled.div`
   padding: 0 max(5vw, 20px);
+  margin-top: 10vh;
   h2 {
     text-align: center;
     margin-bottom: 5vh;

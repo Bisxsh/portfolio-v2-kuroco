@@ -10,9 +10,9 @@
   --color-gradient-hor: linear-gradient(90deg, #0089ff 0%, #e0e1dd 82.29%);
   --font-hero-heading: 96px;
   --font-heading: 64px;
-  --font-sub-heading: 36px;
-  --font-m: 24px;
-  --font-s: 20px;
+  --font-sub-heading: 28px;
+  --font-m: 22px;
+  --font-s: 18px;
   --font-xs: 12px;
 }
 
@@ -138,25 +138,29 @@ p {
 }
 
 @media screen and (min-width: 1600px) {
+  body {
+    padding: 0 20vw;
+  }
+  /* 
   h1 {
-    font-size: calc(var(--font-hero-heading) * 2);
+    font-size: calc(var(--font-hero-heading) * 1.5);
   }
   h2 {
-    font-size: calc(var(--font-heading) * 2);
+    font-size: calc(var(--font-heading) * 1.5);
   }
   h3 {
-    font-size: calc(var(--font-sub-heading) * 2);
+    font-size: calc(var(--font-sub-heading) * 1.5);
   }
   h4 {
-    font-size: calc(var(--font-m) * 2.6);
+    font-size: calc(var(--font-m) * 2);
   }
   h5,
-  span,
   a,
+  span,
   p {
-    font-size: calc(var(--font-s) * 2.6);
+    font-size: calc(var(--font-s) * 2);
   }
   h6 {
-    font-size: calc(var(--font-xs) * 3);
-  }
+    font-size: calc(var(--font-xs) * 2.5);
+  } */
 }

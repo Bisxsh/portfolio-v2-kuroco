@@ -31,6 +31,7 @@ const AboutContainer = styled.div`
     grid-template-columns: repeat(1, minmax(250px, 400px));
     height: max-content;
     max-width: 90vw;
+    place-content: center;
   }
 
   .background-image {
@@ -54,6 +55,24 @@ const AboutContainer = styled.div`
       margin-top: 0px;
     }
   }
+
+  @media screen and (min-width: 1300px) {
+    .boxes-container {
+      grid-template-columns: repeat(3, 25vw);
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .boxes-container {
+      grid-template-columns: repeat(3, 20vw);
+    }
+  }
+
+  @media screen and (min-width: 2000px) {
+    .boxes-container {
+      grid-template-columns: repeat(3, 15vw);
+    }
+  }
 `;
 
 const About = (props: Props) => {
@@ -70,8 +89,7 @@ const About = (props: Props) => {
                 alt="graduation cap"
               />
             }
-            heading="Student"
-            padTop={true}
+            heading="CompSci Student"
             description="Currently in pursuit of a Computer Science Bsc at the University of Bath 🎯"
           />
           <AboutSection
@@ -84,7 +102,6 @@ const About = (props: Props) => {
             }
             heading="Software Developer"
             description="An aspiring developer. Learning more about frontend development everyday 👨‍💻"
-            padTop={false}
           />
           <AboutSection
             image={
@@ -96,7 +113,6 @@ const About = (props: Props) => {
             }
             heading="UI/UX Designer"
             description="Passionate about UI/UX design. Every interaction matters 🔍"
-            padTop={false}
           />
         </div>
         <div className="background-image">

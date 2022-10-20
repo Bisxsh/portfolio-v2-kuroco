@@ -5,7 +5,6 @@ type Props = {
   image: any;
   heading: string;
   description: string;
-  padTop: boolean;
 };
 
 const AboutSectionContainer = styled.div`
@@ -18,10 +17,10 @@ const AboutSectionContainer = styled.div`
   .header {
     display: flex;
     align-items: center;
-    margin-bottom: 2vh;
+    margin-bottom: max(4vh, 10px);
 
     > h3 {
-      margin-left: max(25px, 3vw);
+      margin-left: max(25px, 1.5vw);
       font-weight: 500;
       line-height: max(47px, 100%);
     }
@@ -29,8 +28,8 @@ const AboutSectionContainer = styled.div`
     .icon {
       min-width: 45px;
       @media screen and (min-width: 1600px) {
-        transform: scale(2);
-        margin-left: 3vw;
+        transform: scale(1.4);
+        margin-left: 1vw;
       }
     }
 
@@ -45,15 +44,12 @@ const AboutSectionContainer = styled.div`
       overflow: hidden;
     }
   }
-  .pad-top {
-    margin-top: 1.5vw;
-  }
 `;
 
 const AboutSection = (props: Props) => {
   return (
     <AboutSectionContainer>
-      <div className={`header ${props.padTop ? "pad-top" : ""}`}>
+      <div className={`header`}>
         {props.image}
         <h3>{props.heading}</h3>
       </div>
