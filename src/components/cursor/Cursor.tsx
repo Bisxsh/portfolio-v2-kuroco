@@ -43,6 +43,7 @@ const PointerContainer = styled.div`
     width: 24px;
     height: 24px;
     margin: 2px;
+    opacity: 0.2;
     -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
       both;
     animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;

@@ -5,6 +5,7 @@ import "../global.css";
 import Cursor from "../components/cursor/Cursor";
 import { useState } from "react";
 import MouseContext from "../util/MouseContext";
+import Hero from "../components/hero/Hero";
 
 const IndexPage = () => {
   const [mouseHovering, setMouseHovering] = useState(false);
@@ -12,11 +13,11 @@ const IndexPage = () => {
   return (
     <MouseContext.Provider value={{ mouseHovering, setMouseHovering }}>
       <Cursor />
-      <header>
-        <Navbar />
-      </header>
+      <Navbar />
       <main>
-        <section></section>
+        <section>
+          <Hero />
+        </section>
       </main>
     </MouseContext.Provider>
   );

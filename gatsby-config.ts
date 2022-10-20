@@ -33,7 +33,7 @@ const config: GatsbyConfig = {
         web: [
           {
             name: `Roboto Mono`,
-            file: `https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600&family=Roboto:wght@400;700;900&display=swap`,
+            file: `link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto+Mono:wght@200;300;400;500;600&display=swap`,
           },
         ],
       },
