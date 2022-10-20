@@ -58,7 +58,7 @@ const CirclesContainer = styled.div`
 
   @keyframes pulse {
     50% {
-      opacity: 0.5;
+      opacity: 0.2;
     }
   }
 `;

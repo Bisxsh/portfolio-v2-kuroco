@@ -41,7 +41,7 @@ const ScrollContainer = styled.div`
   height: 100px;
   margin-top: 125px;
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   cursor: pointer;
 
   .m_scroll_arrows {

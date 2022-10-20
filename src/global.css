@@ -93,3 +93,32 @@ select {
     scroll-behavior: auto !important;
   }
 }
+
+h2 {
+  font-size: var(--font-heading);
+}
+
+h3 {
+  font-size: var(--font-m);
+}
+
+h4,
+p {
+  font-size: var(--font-s);
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: calc(var(--font-hero-heading) / 1.5);
+  }
+  h2 {
+    font-size: calc(var(--font-heading) / 1.5);
+  }
+  h3 {
+    font-size: calc(var(--font-m) / 1.2);
+  }
+  h4,
+  p {
+    font-size: calc(var(--font-s) / 1.1);
+  }
+}

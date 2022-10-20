@@ -2,20 +2,21 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import styled from "styled-components";
+import { FontSizes } from "../../util/FontSizes";
 import BackgroundCircles from "./components/BackgroundCircles";
 import ScrollPrompt from "./components/ScrollPrompt";
 
 type Props = {};
 
 const HeroContainer = styled.div`
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  margin-top: -100px;
+  /* margin-top: -100px; */
   position: relative;
 
   header {
@@ -26,7 +27,7 @@ const HeroContainer = styled.div`
     letter-spacing: -5px;
     font-style: normal;
     font-weight: 500;
-    font-size: 96px;
+    font-size: var(--font-hero-heading);
     line-height: 144px;
   }
 
@@ -48,6 +49,12 @@ const HeroContainer = styled.div`
     margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
+
+  @media screen and (max-width: 1024px) {
+    .hero--heading {
+      font-size: 64px;
+    }
+  }
 `;
 
 const Hero = (props: Props) => {
@@ -59,6 +66,7 @@ const Hero = (props: Props) => {
     ],
     loop: true,
     delaySpeed: 2000,
+    deleteSpeed: 15,
   });
 
   const [forenameHovered, setForenameHovered] = useState(false);
@@ -103,10 +111,10 @@ const Hero = (props: Props) => {
             Sitaula
           </span>
         </h1>
-        <h2>
+        <h3>
           <span>{text}</span>
           <Cursor cursorColor="#e0e1dd" />
-        </h2>
+        </h3>
       </motion.header>
       <BackgroundCircles />
       <ScrollPrompt />
