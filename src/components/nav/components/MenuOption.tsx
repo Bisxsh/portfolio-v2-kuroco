@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-scroll";
+import { EnterWithFade } from "../../../util/FramerMotion";
 import MouseContext, {
   mouseEntered,
   mouseLeft,
@@ -27,7 +29,7 @@ const MenuOption = (props: Props) => {
         smooth={true}
         duration={500}
       >
-        <span className="link-number">0{props.number}.</span>&lt;{" "}
+        <h6 className="link-number">0{props.number}. </h6>&lt;
         <span className="link-text">{props.label}</span> /&gt;
       </Link>
     </div>

@@ -29,6 +29,10 @@ const HeroContainer = styled.div`
     font-weight: 500;
     font-size: var(--font-hero-heading);
     line-height: 144px;
+
+    > h1 {
+      display: inline-block;
+    }
   }
 
   .highlighted {
@@ -53,6 +57,7 @@ const HeroContainer = styled.div`
   @media screen and (max-width: 1024px) {
     .hero--heading {
       font-size: 64px;
+      line-height: 64px;
     }
   }
 `;
@@ -93,28 +98,28 @@ const Hero = (props: Props) => {
       <motion.header
         initial={{ opacity: 0, scale: 0.1 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, delay: 0.8 }}
+        transition={{ duration: 1, delay: 1.8 }}
       >
         <h1 className="hero--heading">
-          <span
+          <h1
             className={forenameHovered ? "highlighted" : ""}
             onMouseEnter={() => nameHovered(true)}
             onMouseLeave={() => nameHoverRemoved(true)}
           >
-            Bisesh{" "}
-          </span>
-          <span
+            Bisesh
+          </h1>{" "}
+          <h1
             className={surnameHovered ? "highlighted" : ""}
             onMouseEnter={() => nameHovered(false)}
             onMouseLeave={() => nameHoverRemoved(false)}
           >
             Sitaula
-          </span>
+          </h1>
         </h1>
-        <h3>
+        <h4>
           <span>{text}</span>
           <Cursor cursorColor="#e0e1dd" />
-        </h3>
+        </h4>
       </motion.header>
       <BackgroundCircles />
       <ScrollPrompt />

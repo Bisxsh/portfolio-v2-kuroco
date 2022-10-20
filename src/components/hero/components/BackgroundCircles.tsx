@@ -45,7 +45,7 @@ const CirclesContainer = styled.div`
   }
 
   .c-5 {
-    height: 800px;
+    height: calc(800px + var(--font-hero-heading));
   }
 
   @keyframes ping {
@@ -73,7 +73,7 @@ const BackgroundCircles = (props: Props) => {
           opacity: [0.1, 0.2, 0.4, 0.8, 0.1, 1.0],
           borderRadius: ["20%", "20%", "50%", "80", "20%"],
         }}
-        transition={{ duration: 2.5 }}
+        transition={{ duration: 2.5, delay: 1 }}
         className="circles--container"
       >
         <div className="common anim-ping" />

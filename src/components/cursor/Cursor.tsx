@@ -9,11 +9,11 @@ const PointerContainer = styled.div`
     visibility: hidden;
   }
   .inner-circle {
-    width: 24px;
-    height: 24px;
+    width: 12px;
+    height: 12px;
     background-color: white;
     border-radius: 100%;
-    margin: 2px;
+    margin: 8px;
     -webkit-animation: scale-down-center 0.4s
       cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: scale-down-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -82,7 +82,6 @@ const Cursor = () => {
   if (typeof window === `undefined`) {
     return <></>;
   }
-  const { height, width } = useWindowDimensions();
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);

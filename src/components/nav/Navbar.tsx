@@ -15,12 +15,12 @@ const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 35px clamp(50px, 100%, 2vw);
+  margin: 35px max(50px, 4vw);
   max-width: 100vw;
 
   .logo {
-    width: 40px;
-    height: 40px;
+    width: max(40px, 5vw);
+    height: max(40px, 5vw);
     cursor: pointer;
   }
 
@@ -92,7 +92,7 @@ const NavContainer = styled.ul`
   }
 
   .link-number {
-    font-size: var(--font-xs);
+    display: inline-block;
     line-height: 16px;
     color: var(--color-grey);
   }
@@ -122,15 +122,14 @@ const Navbar = (props: Props) => {
 
   return (
     <NavbarContainer>
-      <motion.div
-        {...EnterFromLeft({ delay: 0.2 })}
+      <div
         className="logo-container"
         onClick={scrollToTop}
         onMouseEnter={() => mouseEntered(setMouseHovering)}
         onMouseLeave={() => mouseLeft(setMouseHovering)}
       >
         <StaticImage src="./assets/logo_gray.png" alt="logo" className="logo" />
-      </motion.div>
+      </div>
 
       <div className="hamburgur-container">
         {(width || 0) < 1024 && (
