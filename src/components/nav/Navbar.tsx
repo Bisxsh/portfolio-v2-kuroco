@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import { EnterFromLeft, EnterWithFade } from "../../util/FramerMotion";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { EnterFromLeft, EnterFromRight } from "../../util/FramerMotion";
+import { animateScroll as scroll } from "react-scroll";
 import Hamburger from "hamburger-react";
+import MenuOption from "./components/MenuOption";
+import MouseContext, { mouseEntered, mouseLeft } from "../../util/MouseContext";
 
 type Props = {};
 
@@ -19,6 +21,7 @@ const NavbarContainer = styled.div`
   .logo {
     width: 40px;
     height: 40px;
+    cursor: pointer;
   }
 
   .hamburgur-container {
@@ -45,21 +48,47 @@ const NavbarContainer = styled.div`
 const NavContainer = styled.ul`
   display: flex;
   flex-direction: column;
+  list-style: none;
 
   .link {
     text-decoration: none;
     color: var(--color-text);
     margin: 10px 20px 0 0;
-  }
 
-  .active {
-    font-weight: 800;
-    background: var(--color-gradient-hor);
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-background-clip: text;
-    -moz-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    :after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      transform: scaleX(0);
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-accent);
+      transform-origin: bottom right;
+      transition: transform 0.25s ease-out;
+    }
+
+    :hover:after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    :hover,
+    :active {
+      .link-text {
+        font-weight: 800;
+        background: var(--color-gradient-hor);
+        background-clip: border-box;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+      }
+    }
   }
 
   .link-number {
@@ -85,6 +114,7 @@ const Navbar = (props: Props) => {
 
   const { height, width } = useWindowDimensions();
   const [menuOpen, setMenuOpen] = useState((width || 0) > 1024 ? true : false);
+  const { setMouseHovering } = useContext(MouseContext);
 
   function scrollToTop() {
     scroll.scrollToTop();
@@ -96,34 +126,32 @@ const Navbar = (props: Props) => {
         {...EnterFromLeft({ delay: 0.2 })}
         className="logo-container"
         onClick={scrollToTop}
+        onMouseEnter={() => mouseEntered(setMouseHovering)}
+        onMouseLeave={() => mouseLeft(setMouseHovering)}
       >
         <StaticImage src="./assets/logo_gray.png" alt="logo" className="logo" />
       </motion.div>
 
       <div className="hamburgur-container">
         {(width || 0) < 1024 && (
-          <motion.div className="hamburgur-menu" {...EnterWithFade({})}>
+          <motion.div className="hamburgur-menu" {...EnterFromRight({})}>
             <Hamburger toggled={menuOpen} toggle={setMenuOpen} />
           </motion.div>
         )}
         {menuOpen && (
           <NavContainer className={(width || 0) > 1024 ? "" : "hamburgur"}>
-            <a href="#link" className="link">
-              <span className="link-number">01. </span>&lt;{" "}
-              <span className="link-text active">About</span> /&gt;
-            </a>
-            <a href="#link" className="link">
-              <span className="link-number">02. </span>&lt;{" "}
-              <span className="link-text">Experience</span> /&gt;
-            </a>
-            <a href="#link" className="link">
-              <span className="link-number">03. </span>&lt;{" "}
-              <span className="link-text">Projects</span> /&gt;
-            </a>
-            <a href="#link" className="link">
-              <span className="link-number">04. </span>&lt;{" "}
-              <span className="link-text">Contact</span> /&gt;
-            </a>
+            <li>
+              <MenuOption number={1} label="About" link="link" />
+            </li>
+            <li>
+              <MenuOption number={2} label="Experience" link="link" />
+            </li>
+            <li>
+              <MenuOption number={3} label="Projects" link="link" />
+            </li>
+            <li>
+              <MenuOption number={4} label="Contact" link="link" />
+            </li>
           </NavContainer>
         )}
       </div>

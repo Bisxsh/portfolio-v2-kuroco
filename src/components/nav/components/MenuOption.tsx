@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-scroll";
+import MouseContext, {
+  mouseEntered,
+  mouseLeft,
+} from "../../../util/MouseContext";
 
 type Props = {
   label: string;
   link: string;
+  number: number;
 };
 
 const MenuOption = (props: Props) => {
+  const { setMouseHovering } = useContext(MouseContext);
+
   return (
-    <div>
+    <div
+      onMouseEnter={() => mouseEntered(setMouseHovering)}
+      onMouseLeave={() => mouseLeft(setMouseHovering)}
+    >
       <Link
         activeClass="active"
         className="link"
@@ -17,7 +27,8 @@ const MenuOption = (props: Props) => {
         smooth={true}
         duration={500}
       >
-        {props.label}
+        <span className="link-number">0{props.number}.</span>&lt;{" "}
+        <span className="link-text">{props.label}</span> /&gt;
       </Link>
     </div>
   );
