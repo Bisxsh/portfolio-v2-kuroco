@@ -27,8 +27,6 @@ const ListingContainer = styled.div`
 `;
 
 const ExperienceListing = (props: Props) => {
-  console.log(props.description);
-
   return (
     <ListingContainer>
       <div className="heading-container">

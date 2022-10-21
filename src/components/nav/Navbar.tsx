@@ -212,10 +212,10 @@ const Navbar = (props: Props) => {
               <MenuOption number={2} label="Experience" link="experience" />
             </li>
             <li>
-              <MenuOption number={3} label="Projects" link="link" />
+              <MenuOption number={3} label="Projects" link="projects" />
             </li>
             <li>
-              <MenuOption number={4} label="Contact" link="link" />
+              <MenuOption number={4} label="Contact" link="contact" />
             </li>
           </NavContainer>
         )}
