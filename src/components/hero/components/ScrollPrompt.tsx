@@ -25,7 +25,7 @@ const ScrollPrompt = (props: Props) => {
         to={"about"}
         spy={true}
         smooth={true}
-        duration={500}
+        duration={250}
       >
         <ScrollContainer className="hero--scroll-prompt">
           <div className="mouse">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
@@ -44,12 +44,22 @@ const AboutSectionContainer = styled.div`
       overflow: hidden;
     }
   }
+
+  transition: outline-offset 200ms ease;
+  :hover {
+    outline: 1px solid var(--color-text);
+    outline-offset: -6px;
+  }
 `;
 
 const AboutSection = (props: Props) => {
+  const [hovered, setHovered] = useState(false);
   return (
-    <AboutSectionContainer>
-      <div className={`header`}>
+    <AboutSectionContainer
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div className={`header ${hovered ? "" : ""}`}>
         {props.image}
         <h3>{props.heading}</h3>
       </div>

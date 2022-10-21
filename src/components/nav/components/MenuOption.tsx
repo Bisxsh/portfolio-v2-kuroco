@@ -27,7 +27,7 @@ const MenuOption = (props: Props) => {
         to={props.link}
         spy={true}
         smooth={true}
-        duration={500}
+        duration={250}
       >
         <h6 className="link-number">0{props.number}. </h6>&lt;
         <span className="link-text">{props.label}</span> /&gt;

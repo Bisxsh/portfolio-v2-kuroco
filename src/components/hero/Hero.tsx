@@ -69,6 +69,7 @@ const Hero = (props: Props) => {
       "Student by day, creative frontend developer by later day.",
       "Could probably be found coding right now...",
       "Guy who knows how to center a div 😎",
+      "You've been here a while. Cup of tea?",
     ],
     loop: true,
     delaySpeed: 2000,
