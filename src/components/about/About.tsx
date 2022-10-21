@@ -15,6 +15,7 @@ const AboutContainer = styled.div`
   max-width: 100vw;
   overflow: hidden;
   position: relative;
+  height: 100vh;
 
   .section-heading {
     margin-bottom: 5vh;

@@ -15,13 +15,18 @@ const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 35px max(50px, 4vw);
+  margin: 0px max(50px, 4vw);
   max-width: 100vw;
 
   .logo {
     width: max(40px, 3vw);
     height: max(40px, 3vw);
     cursor: pointer;
+
+    :hover {
+      -webkit-animation: jello-horizontal 0.9s both;
+      animation: jello-horizontal 0.9s both;
+    }
   }
 
   .hamburgur-container {
@@ -42,6 +47,67 @@ const NavbarContainer = styled.div`
     border: 5px solid;
     border-image-slice: 1;
     border-image-source: var(--color-gradient-hor);
+  }
+
+  @-webkit-keyframes jello-horizontal {
+    0% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  @keyframes jello-horizontal {
+    0% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+    30% {
+      -webkit-transform: scale3d(1.25, 0.75, 1);
+      transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+      -webkit-transform: scale3d(0.75, 1.25, 1);
+      transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+      -webkit-transform: scale3d(1.15, 0.85, 1);
+      transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+      -webkit-transform: scale3d(0.95, 1.05, 1);
+      transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+      -webkit-transform: scale3d(1.05, 0.95, 1);
+      transform: scale3d(1.05, 0.95, 1);
+    }
+    100% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
   }
 `;
 
@@ -140,10 +206,10 @@ const Navbar = (props: Props) => {
         {menuOpen && (
           <NavContainer className={(width || 0) > 1024 ? "" : "hamburgur"}>
             <li>
-              <MenuOption number={1} label="About" link="link" />
+              <MenuOption number={1} label="About" link="about" />
             </li>
             <li>
-              <MenuOption number={2} label="Experience" link="link" />
+              <MenuOption number={2} label="Experience" link="experience" />
             </li>
             <li>
               <MenuOption number={3} label="Projects" link="link" />

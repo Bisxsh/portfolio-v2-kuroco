@@ -18,6 +18,7 @@ const HeroContainer = styled.div`
   overflow: hidden;
   /* margin-top: -100px; */
   position: relative;
+  padding-bottom: 5vh;
 
   header {
     position: absolute;
@@ -66,8 +67,8 @@ const Hero = (props: Props) => {
   const [text, count] = useTypewriter({
     words: [
       "Student by day, creative frontend developer by later day.",
-      "Guy who knows how to center a div 😎",
       "Could probably be found coding right now...",
+      "Guy who knows how to center a div 😎",
     ],
     loop: true,
     delaySpeed: 2000,

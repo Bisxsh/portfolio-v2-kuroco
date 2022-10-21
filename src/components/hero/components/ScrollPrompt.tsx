@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React, { useContext } from "react";
+import { Link } from "react-scroll";
 import styled from "styled-components";
 import MouseContext, {
   mouseEntered,
@@ -18,16 +19,25 @@ const ScrollPrompt = (props: Props) => {
       onMouseEnter={() => mouseEntered(setMouseHovering)}
       onMouseLeave={() => mouseLeft(setMouseHovering)}
     >
-      <ScrollContainer className="hero--scroll-prompt">
-        <div className="mouse">
-          <div className="wheel"></div>
-        </div>
-        <div>
-          <span className="m_scroll_arrows arr-1"></span>
-          <span className="m_scroll_arrows arr-2"></span>
-          <span className="m_scroll_arrows arr-3"></span>
-        </div>
-      </ScrollContainer>
+      <Link
+        activeClass="active"
+        className="link"
+        to={"about"}
+        spy={true}
+        smooth={true}
+        duration={500}
+      >
+        <ScrollContainer className="hero--scroll-prompt">
+          <div className="mouse">
+            <div className="wheel"></div>
+          </div>
+          <div>
+            <span className="m_scroll_arrows arr-1"></span>
+            <span className="m_scroll_arrows arr-2"></span>
+            <span className="m_scroll_arrows arr-3"></span>
+          </div>
+        </ScrollContainer>
+      </Link>
     </motion.div>
   );
 };
@@ -41,7 +51,7 @@ const ScrollContainer = styled.div`
   height: 100px;
   margin-top: 125px;
   position: absolute;
-  bottom: 2%;
+  bottom: -1%;
   cursor: pointer;
 
   .m_scroll_arrows {
