@@ -10,13 +10,14 @@ import About from "../components/about/About";
 import Experience from "../components/experience/Experience";
 import { Element } from "react-scroll";
 import styled from "styled-components";
+import Projects from "../components/projects/Projects";
 
 const NavbarContainer = styled.div`
   position: fixed;
   left: 0;
   right: 0;
   width: 100vw;
-  z-index: 999;
+  z-index: 2;
   background: var(--color-bg);
   border-radius: 0 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -58,6 +59,10 @@ const IndexPage = () => {
         <section>
           <Element name="experience" />
           <Experience />
+        </section>
+        <section>
+          <Element name="projects" />
+          <Projects />
         </section>
       </main>
     </MouseContext.Provider>

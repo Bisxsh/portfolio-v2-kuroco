@@ -9,13 +9,14 @@ type Props = {};
 
 const AboutContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 20vh;
   max-width: 100vw;
   overflow: hidden;
   position: relative;
-  height: 100vh;
+  height: max-content;
 
   .section-heading {
     margin-bottom: 5vh;
@@ -29,7 +30,7 @@ const AboutContainer = styled.div`
     top: 0;
     left: 0;
     display: grid;
-    grid-template-columns: repeat(1, minmax(250px, 400px));
+    grid-template-columns: repeat(1, min(400px, 80vw));
     height: max-content;
     max-width: 90vw;
     place-content: center;
@@ -78,8 +79,8 @@ const AboutContainer = styled.div`
 
 const About = (props: Props) => {
   return (
-    <AboutContainer>
-      <motion.div {...EnterWithFade(0.5)}>
+    <motion.div {...EnterWithFade(0.5)}>
+      <AboutContainer>
         <h2 className="section-heading">About me</h2>
         <div className="boxes-container">
           <AboutSection
@@ -123,8 +124,8 @@ const About = (props: Props) => {
             alt=""
           />
         </div>
-      </motion.div>
-    </AboutContainer>
+      </AboutContainer>
+    </motion.div>
   );
 };
 
