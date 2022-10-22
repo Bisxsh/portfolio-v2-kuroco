@@ -39,10 +39,10 @@ const ShowcaseProject = (props: Props) => {
       </motion.div>
       <motion.div {...EnterFromRight(0)}>
         <AnimatedImage
-          scrollHeight={4500}
-          width={444}
-          height={872}
-          numFrames={100}
+          scrollHeight={7500}
+          canvasWidth={444}
+          canvasHeight={872}
+          numFrames={77}
         />
       </motion.div>
     </ShowcaseContainer>
