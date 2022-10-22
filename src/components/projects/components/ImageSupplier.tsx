@@ -13,12 +13,9 @@ export const ImageSupplier = () => {
         edges {
           node {
             childImageSharp {
-              gatsbyImageData(
-                width: 444
-                quality: 100
-                placeholder: BLURRED
-                formats: [AUTO, WEBP, AVIF]
-              )
+              fluid(maxWidth: 444, quality: 100) {
+                src
+              }
             }
           }
         }

@@ -18,14 +18,6 @@ const AboutContainer = styled.div`
   position: relative;
   height: max-content;
 
-  .section-heading {
-    margin-bottom: 5vh;
-    /* position: absolute; */
-    top: 50;
-    left: 50;
-    text-align: center;
-  }
-
   .boxes-container {
     top: 0;
     left: 0;

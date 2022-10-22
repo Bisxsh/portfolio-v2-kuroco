@@ -1,12 +1,6 @@
-import { graphql, useStaticQuery } from "gatsby";
-import { getImage, GatsbyImage, GatsbyImageProps } from "gatsby-plugin-image";
-import React, { useRef, useState, useEffect, createRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { ImageSupplier } from "./ImageSupplier";
-
-function getCurrentFrame(index: number) {
-  return `./assets/ezgif-frame-${index.toString().padStart(3, "0")}.png`;
-}
 
 type Props = {
   scrollHeight: number;
@@ -16,21 +10,16 @@ type Props = {
 };
 
 const DisplayContainer = styled.div`
-  .model {
-    position: sticky;
-    right: 100%;
-    top: 100px;
-    left: 80%;
-    /* background-color: red;
-    width: 100px;
-    height: 100px; */
+  canvas {
+    border-radius: 70px;
   }
 `;
 
-const AnimatedImage = ({ scrollHeight, numFrames }: Props) => {
+const AnimatedImage = ({ scrollHeight, numFrames, width, height }: Props) => {
   const [frameIndex, setFrameIndex] = useState(0);
-  const imagesSource = ImageSupplier();
-  const [images, setImages] = useState<React.ReactElement[]>([]);
+  let imagesSource = ImageSupplier();
+  const canvasRef = useRef(null);
+  const [images, setImages] = useState<HTMLImageElement[]>([]);
 
   const handleScroll = () => {
     const scrollFraction = window.scrollY / (scrollHeight - window.innerHeight);
@@ -45,29 +34,55 @@ const AnimatedImage = ({ scrollHeight, numFrames }: Props) => {
     if (index != frameIndex) setFrameIndex(index);
   };
 
-  const preloadImageComponents = () => {
-    const componentArr: React.ReactElement[] = imagesSource.map(
-      (item: any, i: number) => {
-        const img = item.node.childImageSharp.gatsbyImageData;
-        return <GatsbyImage image={img} alt="" className="model" />;
-      }
-    );
-    console.log(componentArr);
+  const renderCanvas = () => {
     //@ts-ignore
-    setImages([...componentArr]);
-    console.log(images);
+    const context = canvasRef.current.getContext("2d");
+    context.canvas.width = width;
+    context.canvas.height = height;
+  };
+
+  const preloadImageComponents = () => {
+    const list = [];
+    for (let i = 1; i < numFrames; i++) {
+      const img = new Image();
+      const imgSrc = imagesSource[i].node.childImageSharp.fluid.src;
+      img.src = imgSrc;
+      list.push(img);
+    }
+    setImages(list);
   };
 
   useEffect(() => {
     preloadImageComponents();
+    renderCanvas();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!canvasRef.current || images.length < 1) {
+      return;
+    }
+
+    //@ts-ignore
+    const context = canvasRef.current.getContext("2d");
+    let requestId: number;
+
+    const render = () => {
+      try {
+        context.drawImage(images[frameIndex], 5, 0);
+      } catch (e) {}
+      requestId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => cancelAnimationFrame(requestId);
+  }, [frameIndex, images]);
+
   return (
     <DisplayContainer style={{ height: scrollHeight }}>
-      {/* <GatsbyImage image={images[frameIndex]} alt="" className="model" /> */}
-      {images[frameIndex]}
+      <canvas ref={canvasRef} className="model" />
     </DisplayContainer>
   );
 };
