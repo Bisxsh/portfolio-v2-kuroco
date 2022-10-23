@@ -46,7 +46,6 @@ const Projects = (props: Props) => {
       >
         🔎 View More 🔍
       </motion.div>
-      <div style={{ height: 1000 }} />
     </ProjectsContainer>
   );
 };

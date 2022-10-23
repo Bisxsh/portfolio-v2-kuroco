@@ -11,6 +11,7 @@ import Experience from "../components/experience/Experience";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 import Projects from "../components/projects/Projects";
+import Contact from "../components/contact/Contact";
 
 const NavbarContainer = styled.div`
   position: fixed;
@@ -54,22 +55,33 @@ const IndexPage = () => {
         <section>
           <Hero />
         </section>
-        <section>
+        <CenteredSection>
           <Element name="about" />
           <About />
-        </section>
-        <section>
+        </CenteredSection>
+        <CenteredSection>
           <Element name="experience" />
           <Experience />
-        </section>
-        <section>
+        </CenteredSection>
+        <CenteredSection>
           <Element name="projects" />
           <Projects />
-        </section>
+        </CenteredSection>
+        <CenteredSection>
+          <Element name="contact" className="email" />
+          <Contact />
+        </CenteredSection>
       </main>
     </MouseContext.Provider>
   );
 };
+
+const CenteredSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default IndexPage;
 
