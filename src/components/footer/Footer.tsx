@@ -51,6 +51,7 @@ const FooterContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin-bottom: 3vw;
 
   .footer--logo {
