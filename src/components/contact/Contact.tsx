@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import ConfirmableButton from "./components/ConfirmableButton";
 import { EnterWithFade } from "../../util/FramerMotion";
+import MouseContext, { mouseEntered, mouseLeft } from "../../util/MouseContext";
 
 const Contact = () => {
   const {
@@ -25,6 +26,7 @@ const Contact = () => {
     setMessage(event.target.value);
   };
   const [messageSent, setMessageSent] = useState(false);
+  const { setMouseHovering } = useContext(MouseContext);
 
   function constructEmail(data: any) {
     return {
@@ -88,7 +90,12 @@ const Contact = () => {
               </textarea>
             </div>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onMouseEnter={() => mouseEntered(setMouseHovering)}
+              onMouseLeave={() => mouseLeft(setMouseHovering)}
+            >
               <ConfirmableButton sent={messageSent}>
                 <input
                   className="submit-form"
