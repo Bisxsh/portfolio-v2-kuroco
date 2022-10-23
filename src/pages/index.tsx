@@ -15,21 +15,28 @@ import Contact from "../components/contact/Contact";
 import Footer from "../components/footer/Footer";
 
 const NavbarContainer = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  z-index: 2;
-  background: var(--color-bg);
-  border-radius: 0 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0.8;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  border-radius: 10px;
-  max-height: 10vh;
+  .navbar--container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 2;
+    background: var(--color-bg);
+    border-radius: 0 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.8;
+    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 10px;
+    max-height: 10vh;
+  }
+
+  .hidden {
+    opacity: 0;
+    transform: translateY(-1vh);
+  }
 `;
 
 const IndexPage = () => {
@@ -49,9 +56,11 @@ const IndexPage = () => {
   return (
     <MouseContext.Provider value={{ mouseHovering, setMouseHovering }}>
       <Cursor />
-      //TODO change so showNavbar assigns css class with opacity to animate
-      between states
-      <NavbarContainer>{showNavbar && <Navbar />}</NavbarContainer>
+      <NavbarContainer>
+        <div className={`navbar--container ${!showNavbar && "hidden"}`}>
+          <Navbar />
+        </div>
+      </NavbarContainer>
       <main>
         <section>
           <Hero />
