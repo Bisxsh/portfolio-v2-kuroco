@@ -87,7 +87,10 @@ const AnimatedImage = ({
     const render = () => {
       try {
         context.drawImage(images[frameIndex], 5, 0);
-      } catch (e) {}
+      } catch (e) {
+        console.log(images[frameIndex]);
+        console.log(e);
+      }
       requestId = requestAnimationFrame(render);
     };
 

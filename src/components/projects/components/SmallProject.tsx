@@ -29,6 +29,7 @@ const SmallProject = ({
   return (
     <motion.div {...EnterWithFade(0)}>
       <motion.div
+        viewport={{ once: true }}
         animate={{ rotate: [0, 0, 1, 0, -1, 0, 1, 0, -1, 0] }}
         transition={{ duration: 0.5, delay: 1.5 + (delay || 0) }}
       >

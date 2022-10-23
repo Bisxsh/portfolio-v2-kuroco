@@ -8,6 +8,7 @@ export const ImageSupplier = () => {
         filter: {
           extension: { regex: "/(jpg)|(jpeg)|(png)/" }
           sourceInstanceName: { eq: "images" }
+          absolutePath: { regex: "/ezgif/" }
         }
       ) {
         edges {
