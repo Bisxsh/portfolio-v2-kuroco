@@ -15,7 +15,7 @@ import Projects from "../components/projects/Projects";
 const NavbarContainer = styled.div`
   position: fixed;
   left: 0;
-  right: 0;
+  top: 0;
   width: 100vw;
   z-index: 2;
   background: var(--color-bg);
@@ -47,6 +47,8 @@ const IndexPage = () => {
   return (
     <MouseContext.Provider value={{ mouseHovering, setMouseHovering }}>
       <Cursor />
+      //TODO change so showNavbar assigns css class with opacity to animate
+      between states
       <NavbarContainer>{showNavbar && <Navbar />}</NavbarContainer>
       <main>
         <section>

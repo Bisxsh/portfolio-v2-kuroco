@@ -115,3 +115,24 @@ export const GraphQLIcon = (
     alt="Graph QL"
   />
 );
+export const ReactTestingLibraryIcon = (
+  <img
+    width={50}
+    src={require("../images/skills/react-testing-library.svg").default}
+    alt="Graph QL"
+  />
+);
+export const JestIcon = (
+  <img
+    width={50}
+    src={require("../images/skills/jest.svg").default}
+    alt="Graph QL"
+  />
+);
+export const NetlifyIcon = (
+  <img
+    width={50}
+    src={require("../images/skills/netlify.svg").default}
+    alt="Graph QL"
+  />
+);

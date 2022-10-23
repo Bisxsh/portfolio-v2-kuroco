@@ -6,8 +6,12 @@ import {
   FramerMotionIcon,
   GatsbyIcon,
   GraphQLIcon,
+  JestIcon,
+  NetlifyIcon,
   ReactOriginalIcon,
+  ReactTestingLibraryIcon,
   StyledComponentsIcon,
+  TypescriptIcon,
 } from "../../../util/Logos";
 import AnimatedImage from "./AnimatedImage";
 import TechnologyLogo from "./TechnologyLogo";
@@ -27,6 +31,7 @@ const ShowcaseProject = (props: Props) => {
           Psst. You can click and hold to see what they are 😉
         </h6>
         <div className="logos-container">
+          <TechnologyLogo image={TypescriptIcon} logoText="Typescript" />
           <TechnologyLogo image={ReactOriginalIcon} logoText="React" />
           <TechnologyLogo image={GatsbyIcon} logoText="Gatsby" />
           <TechnologyLogo
@@ -35,6 +40,12 @@ const ShowcaseProject = (props: Props) => {
           />
           <TechnologyLogo image={FramerMotionIcon} logoText="Framer Motion" />
           <TechnologyLogo image={GraphQLIcon} logoText="Graph QL" />
+          <TechnologyLogo
+            image={ReactTestingLibraryIcon}
+            logoText="React Testing Library"
+          />
+          <TechnologyLogo image={JestIcon} logoText="Jest" />
+          <TechnologyLogo image={NetlifyIcon} logoText="Netlify" />
         </div>
       </motion.div>
       <motion.div {...EnterFromRight(0)}>
@@ -61,10 +72,13 @@ const ShowcaseContainer = styled.div`
 
   .logos-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 80px);
+    grid-column-gap: 2vw;
+    grid-row-gap: 2vw;
     margin: 4vh;
     justify-content: center;
     align-items: center;
+    place-items: center;
   }
 
   canvas {
@@ -86,19 +100,13 @@ const ShowcaseContainer = styled.div`
     .text-container {
       position: sticky;
       top: 40%;
-      left: 20%;
+      left: 0%;
       height: max-content;
       max-width: 30vw;
     }
 
     canvas {
-      left: 60%;
-    }
-
-    .logos-container {
-      grid-template-columns: repeat(3, 80px);
-      grid-column-gap: 2vw;
-      grid-row-gap: 2vw;
+      left: 80%;
     }
   }
 

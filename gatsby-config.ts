@@ -20,7 +20,6 @@ const config: GatsbyConfig = {
         name: "images",
         path: "./src/components/projects/assets",
       },
-      __key: "images",
     },
     {
       resolve: `gatsby-omni-font-loader`,
