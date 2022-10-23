@@ -12,6 +12,7 @@ import { Element } from "react-scroll";
 import styled from "styled-components";
 import Projects from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
+import Footer from "../components/footer/Footer";
 
 const NavbarContainer = styled.div`
   position: fixed;
@@ -70,6 +71,9 @@ const IndexPage = () => {
         <CenteredSection>
           <Element name="contact" className="email" />
           <Contact />
+        </CenteredSection>
+        <CenteredSection>
+          <Footer />
         </CenteredSection>
       </main>
     </MouseContext.Provider>

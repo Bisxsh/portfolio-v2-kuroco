@@ -5,6 +5,7 @@ import MouseContext from "../../util/MouseContext";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 const PointerContainer = styled.div`
+  pointer-events: none;
   @media (hover: none) {
     visibility: hidden;
   }

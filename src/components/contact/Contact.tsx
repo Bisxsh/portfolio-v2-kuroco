@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import ConfirmableButton from "./components/ConfirmableButton";
+import { EnterWithFade } from "../../util/FramerMotion";
 
 const Contact = () => {
   const {
@@ -54,45 +55,50 @@ const Contact = () => {
   }, [message]);
 
   return (
-    <EmailContainer>
-      <h3>Send me a message!</h3>
-      <h5>Got any questions or just want to say hello? Go ahead! 😄</h5>
+    <div>
+      <motion.h2 {...EnterWithFade(0)} className="section-heading">
+        Contact Me
+      </motion.h2>
+      <EmailContainer>
+        <h3>Send me a message!</h3>
+        <h5>Got any questions or just want to say hello? Go ahead! 😄</h5>
 
-      <FormContainer onSubmit={handleSubmit(sendEmail)}>
-        <div className="form--upper">
-          <div className="form--small left">
-            <label>Your name</label>
-            <input type="text" {...register("name", options.name)} />
+        <FormContainer onSubmit={handleSubmit(sendEmail)}>
+          <div className="form--upper">
+            <div className="form--small left">
+              <label>Your name</label>
+              <input type="text" {...register("name", options.name)} />
+            </div>
+
+            <div className="form--small right">
+              <label>Your email</label>
+              <input type="email" {...register("email")} />
+            </div>
           </div>
 
-          <div className="form--small right">
-            <label>Your email</label>
-            <input type="email" {...register("email")} />
+          <div className="form--message">
+            <label>Your message</label>
+            <textarea
+              {...register("message")}
+              ref={textareaRef}
+              onChange={textAreaChange}
+            >
+              {message}
+            </textarea>
           </div>
-        </div>
 
-        <div className="form--message">
-          <label>Your message</label>
-          <textarea
-            {...register("message")}
-            ref={textareaRef}
-            onChange={textAreaChange}
-          >
-            {message}
-          </textarea>
-        </div>
-
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <ConfirmableButton sent={messageSent}>
-            <input
-              className="submit-form"
-              type="submit"
-              style={{ cursor: "pointer" }}
-            />
-          </ConfirmableButton>
-        </motion.div>
-      </FormContainer>
-    </EmailContainer>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <ConfirmableButton sent={messageSent}>
+              <input
+                className="submit-form"
+                type="submit"
+                style={{ cursor: "pointer" }}
+              />
+            </ConfirmableButton>
+          </motion.div>
+        </FormContainer>
+      </EmailContainer>
+    </div>
   );
 };
 
@@ -102,8 +108,8 @@ const EmailContainer = styled.div`
   background-color: white;
   border-radius: 10px;
   box-shadow: var(--standard-shadow);
-  transform: translateY(200px);
   z-index: 1;
+  margin: 5vh 0;
 
   @media screen and (max-width: 700px) {
     width: 90vw;
@@ -119,7 +125,7 @@ const EmailContainer = styled.div`
 
   color: var(--color-accent);
   h3 {
-    color: var(--color-c2a);
+    color: var(--color-accent);
     margin-bottom: 20px;
   }
 
@@ -134,6 +140,7 @@ const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 
   label {
     align-self: flex-start;
