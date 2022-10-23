@@ -17,6 +17,7 @@ const NavbarContainer = styled.div`
   align-items: center;
   margin: 0px max(50px, 4vw);
   max-width: 100vw;
+  padding: 15px 0;
 
   .logo {
     width: max(40px, 3vw);
@@ -39,7 +40,7 @@ const NavbarContainer = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-85%, -25%);
+    transform: translate(-85%, -13%);
     padding: 40px;
     width: max-content;
     background-color: var(--color-bg);

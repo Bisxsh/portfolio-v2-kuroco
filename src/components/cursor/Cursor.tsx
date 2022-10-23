@@ -4,12 +4,58 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import MouseContext from "../../util/MouseContext";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
+const Cursor = () => {
+  if (typeof window === `undefined`) {
+    return <></>;
+  }
+
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  const springConfig = { damping: 50, stiffness: 1000 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  useEffect(() => {
+    const moveCursor = (e: any) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
+    };
+    window.addEventListener("mousemove", moveCursor);
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
+  }, []);
+
+  return (
+    <MouseContext.Consumer>
+      {(context) => (
+        <PointerContainer data-testid="pointer">
+          <motion.div
+            className="cursor"
+            style={{
+              translateX: cursorXSpring,
+              translateY: cursorYSpring,
+              zIndex: 10,
+            }}
+          >
+            <div
+              className={`inner-circle ${
+                context.mouseHovering ? "hovering" : ""
+              }`}
+            />
+          </motion.div>
+        </PointerContainer>
+      )}
+    </MouseContext.Consumer>
+  );
+};
+
 const PointerContainer = styled.div`
   pointer-events: none;
   @media (hover: none) {
     visibility: hidden;
   }
-  z-index: 999;
+  z-index: 10;
   .inner-circle {
     width: 12px;
     height: 12px;
@@ -45,7 +91,7 @@ const PointerContainer = styled.div`
     width: 24px;
     height: 24px;
     margin: 2px;
-    opacity: 0.2;
+    opacity: 0.5;
     -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
       both;
     animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -79,50 +125,5 @@ const PointerContainer = styled.div`
     border-radius: 100%;
   }
 `;
-
-const Cursor = () => {
-  if (typeof window === `undefined`) {
-    return <></>;
-  }
-
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springConfig = { damping: 50, stiffness: 1000 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-
-  useEffect(() => {
-    const moveCursor = (e: any) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
-    };
-    window.addEventListener("mousemove", moveCursor);
-    return () => {
-      window.removeEventListener("mousemove", moveCursor);
-    };
-  }, []);
-
-  return (
-    <MouseContext.Consumer>
-      {(context) => (
-        <PointerContainer data-testid="pointer">
-          <motion.div
-            className="cursor"
-            style={{
-              translateX: cursorXSpring,
-              translateY: cursorYSpring,
-            }}
-          >
-            <div
-              className={`inner-circle ${
-                context.mouseHovering ? "hovering" : ""
-              }`}
-            />
-          </motion.div>
-        </PointerContainer>
-      )}
-    </MouseContext.Consumer>
-  );
-};
 
 export default Cursor;
