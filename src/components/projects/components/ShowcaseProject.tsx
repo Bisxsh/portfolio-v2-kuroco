@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import { EnterFromLeft, EnterFromRight } from "../../../util/FramerMotion";
 import {
   FramerMotionIcon,
@@ -19,6 +20,11 @@ import TechnologyLogo from "./TechnologyLogo";
 type Props = {};
 
 const ShowcaseProject = (props: Props) => {
+  if (typeof window === `undefined`) {
+    return <></>;
+  }
+  const { height, width } = useWindowDimensions();
+
   return (
     <ShowcaseContainer>
       <motion.div {...EnterFromLeft(0)} className="text-container">
@@ -48,7 +54,10 @@ const ShowcaseProject = (props: Props) => {
           <TechnologyLogo image={NetlifyIcon} logoText="Netlify" />
         </div>
       </motion.div>
-      <motion.div {...EnterFromRight(0)}>
+      <motion.div
+        {...EnterFromRight(0)}
+        className={`${(width || 0) < 500 ? "shrink" : ""}`}
+      >
         <AnimatedImage
           scrollHeight={7500}
           canvasWidth={444}
@@ -81,15 +90,15 @@ const ShowcaseContainer = styled.div`
     place-items: center;
   }
 
-  canvas {
-    position: sticky;
-    top: 20%;
-    left: 50%;
-  }
-
   .text-container {
     max-width: 60vw;
     margin-bottom: 10vh;
+  }
+
+  .shrink {
+    canvas {
+      scale: 0.7;
+    }
   }
 
   @media screen and (min-width: 1000px) {
@@ -103,10 +112,6 @@ const ShowcaseContainer = styled.div`
       left: 0%;
       height: max-content;
       max-width: 30vw;
-    }
-
-    canvas {
-      left: 80%;
     }
   }
 

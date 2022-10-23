@@ -11,8 +11,19 @@ type Props = {
 };
 
 const DisplayContainer = styled.div`
+  position: relative;
   canvas {
     border-radius: 70px;
+    position: sticky;
+    top: 10%;
+    left: 50%;
+  }
+  @media screen and (min-width: 1000px) {
+    canvas {
+      top: 20%;
+      left: 80%;
+      transform: translate(0, 0);
+    }
   }
 `;
 
@@ -42,7 +53,6 @@ const AnimatedImage = ({
       numFrames - 1,
       Math.ceil(scrollFraction * numFrames)
     );
-    console.log(index);
 
     if (index <= 0 || index > numFrames) {
       return;
@@ -87,10 +97,7 @@ const AnimatedImage = ({
     const render = () => {
       try {
         context.drawImage(images[frameIndex], 5, 0);
-      } catch (e) {
-        console.log(images[frameIndex]);
-        console.log(e);
-      }
+      } catch (e) {}
       requestId = requestAnimationFrame(render);
     };
 
