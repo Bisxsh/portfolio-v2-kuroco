@@ -21,7 +21,7 @@ const Experience = () => {
         <ExperienceListing
           companyName="Shmeeb Inc."
           jobTitle="Junior Software Developer"
-          dates="Nov 2022 - Present"
+          dates="Nov 2021 - Present"
           description={[
             "Created and maintained Java plugins for a network of Minecraft servers with over 500 concurrent players",
             "Managed a Discord server with over 85,000 users",
