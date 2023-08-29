@@ -15,31 +15,7 @@ import Contact from "../components/contact/Contact";
 import Footer from "../components/footer/Footer";
 import HeroV2 from "../components/hero-v2/Hero";
 
-const NavbarContainer = styled.div<{ $blackBackground?: boolean }>`
-  .navbar--container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    z-index: 2;
-    background: ${(props) =>
-      props.$blackBackground ? "black" : "var(--color-bg)"};
-    border-radius: 0 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0.8;
-    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
-    border-radius: 10px;
-    max-height: 10vh;
-  }
-
-  .hidden {
-    opacity: 0;
-    transform: translateY(-1vh);
-  }
-`;
+const NavbarContainer = styled.div<{ $blackBackground?: boolean }>``;
 
 const IndexPage = () => {
   if (typeof window === `undefined`) {
@@ -70,11 +46,9 @@ const IndexPage = () => {
   return (
     <MouseContext.Provider value={{ mouseHovering, setMouseHovering }}>
       <Cursor />
-      <NavbarContainer $blackBackground={blackBackground}>
-        <div className={`navbar--container ${!showNavbar && "hidden"}`}>
-          <Navbar />
-        </div>
-      </NavbarContainer>
+
+      <Navbar blackBackground={blackBackground} showNavbar={showNavbar} />
+
       <main>
         <section>
           {/* <Hero /> */}

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import { EnterFromLeft, EnterFromRight } from "../../util/FramerMotion";
@@ -9,15 +9,40 @@ import Hamburger from "hamburger-react";
 import MenuOption from "./components/MenuOption";
 import MouseContext, { mouseEntered, mouseLeft } from "../../util/MouseContext";
 
-type Props = {};
+type Props = {
+  blackBackground: boolean;
+  showNavbar: boolean;
+};
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled.div<{
+  $blackBackground?: boolean;
+  $showNavbar?: boolean;
+}>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0px max(50px, 4vw);
   max-width: 100vw;
-  padding: 15px 0;
+  padding: 40px max(50px, 4vw);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 21;
+  background: ${(props) =>
+    props.$blackBackground ? "black" : "var(--color-bg)"};
+  border-radius: 0 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  opacity: 0.8;
+  transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 10px;
+  max-height: 10vh;
+
+  opacity: ${(props) => (props.$showNavbar ? 100 : 0)};
+  transform: ${(props) =>
+    props.$showNavbar ? "translateY(-1vh)" : "translateY(-1vh)"};
 
   .logo {
     width: max(40px, 3vw);
@@ -187,7 +212,10 @@ const Navbar = (props: Props) => {
   }
 
   return (
-    <NavbarContainer>
+    <NavbarContainer
+      $blackBackground={props.blackBackground}
+      $showNavbar={props.showNavbar}
+    >
       <div
         className="logo-container"
         onClick={scrollToTop}

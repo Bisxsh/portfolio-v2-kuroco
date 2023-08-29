@@ -53,6 +53,28 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
+/* Scrollbar styles */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1f2327;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Set core body defaults */
 body {
   background-color: var(--color-bg);
