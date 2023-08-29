@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500;600&family=Roboto:wght@400;700;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --color-bg: #292d32;
@@ -58,6 +61,10 @@ body {
   line-height: 1.5;
   font-family: "Roboto Mono", monospace, sans-serif;
   color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-transition: background-color 300ms linear;
+  -ms-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
 }
 
 /* A elements that don't have a class get default styles */
@@ -86,6 +93,16 @@ select {
   top: 50;
   left: 50;
   text-align: center;
+}
+
+.unclickable {
+  pointer-events: none !important;
+}
+
+.abs-center {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */

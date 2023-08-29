@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+.hero-v2-h1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 5rem;
+}
+
+.hero-v2-h2 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 8rem;
+  line-height: 82.9%;
+
+  color: #121212;
+}
+
+.hero-v2-h3 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3rem;
+
+  color: rgb(0, 0, 0);
+}

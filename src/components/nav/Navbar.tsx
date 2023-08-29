@@ -44,7 +44,6 @@ const NavbarContainer = styled.div`
     padding: 40px;
     width: max-content;
     background-color: var(--color-bg);
-
     border: 5px solid;
     border-image-slice: 1;
     border-image-source: var(--color-gradient-hor);

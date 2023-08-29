@@ -3,7 +3,7 @@ import type { HeadFC } from "gatsby";
 import Navbar from "../components/nav/Navbar";
 import "../global.css";
 import Cursor from "../components/cursor/Cursor";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MouseContext from "../util/MouseContext";
 import Hero from "../components/hero/Hero";
 import About from "../components/about/About";
@@ -13,15 +13,17 @@ import styled from "styled-components";
 import Projects from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
 import Footer from "../components/footer/Footer";
+import HeroV2 from "../components/hero-v2/Hero";
 
-const NavbarContainer = styled.div`
+const NavbarContainer = styled.div<{ $blackBackground?: boolean }>`
   .navbar--container {
     position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
     z-index: 2;
-    background: var(--color-bg);
+    background: ${(props) =>
+      props.$blackBackground ? "black" : "var(--color-bg)"};
     border-radius: 0 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px) saturate(180%);
@@ -44,28 +46,41 @@ const IndexPage = () => {
     return <></>;
   }
   const [mouseHovering, setMouseHovering] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
+  const [blackBackground, setBlackBackground] = useState(true);
+  const aboutRef = useRef<HTMLDivElement>(null);
 
   let prevScrollpos = window.pageYOffset;
   window.onscroll = () => {
     const currentScrollPos = window.pageYOffset;
     setShowNavbar(prevScrollpos > currentScrollPos);
     prevScrollpos = currentScrollPos;
+    setBlackBackground(
+      window.pageYOffset <= (aboutRef.current?.offsetTop ?? 400)
+    );
   };
+
+  useEffect(() => {
+    document.body.style.backgroundColor = blackBackground
+      ? "black"
+      : "var(--color-bg)";
+  }, [blackBackground]);
 
   return (
     <MouseContext.Provider value={{ mouseHovering, setMouseHovering }}>
       <Cursor />
-      <NavbarContainer>
+      <NavbarContainer $blackBackground={blackBackground}>
         <div className={`navbar--container ${!showNavbar && "hidden"}`}>
           <Navbar />
         </div>
       </NavbarContainer>
       <main>
         <section>
-          <Hero />
+          {/* <Hero /> */}
+          <HeroV2 mobileNavbarOpen={mobileMenuOpen} />
         </section>
-        <CenteredSection>
+        <CenteredSection ref={aboutRef}>
           <Element name="about" />
           <About />
         </CenteredSection>
