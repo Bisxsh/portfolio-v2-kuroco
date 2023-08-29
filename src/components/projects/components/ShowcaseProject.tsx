@@ -56,7 +56,7 @@ const ShowcaseProject = (props: Props) => {
       </motion.div>
       <motion.div
         {...EnterFromRight(0)}
-        className={`${(width || 0) < 500 ? "shrink" : ""}`}
+        className={`${(width || 0) < 1600 ? "shrink-canvas" : ""}`}
       >
         <AnimatedImage
           scrollHeight={7500}
@@ -95,7 +95,7 @@ const ShowcaseContainer = styled.div`
     margin-bottom: 10vh;
   }
 
-  .shrink {
+  .shrink-canvas {
     canvas {
       scale: 0.7;
     }
@@ -108,7 +108,7 @@ const ShowcaseContainer = styled.div`
 
     .text-container {
       position: sticky;
-      top: 40%;
+      top: 15%;
       left: 0%;
       height: max-content;
       max-width: 30vw;

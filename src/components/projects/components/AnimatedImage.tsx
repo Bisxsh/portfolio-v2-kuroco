@@ -18,11 +18,11 @@ const DisplayContainer = styled.div`
     top: 10%;
     left: 50%;
   }
-  @media screen and (min-width: 1000px) {
+  @media screen and (max-width: 1600px) {
     canvas {
       top: 20%;
       left: 80%;
-      transform: translate(0, 0);
+      transform: translate(0px, -270px);
     }
   }
 `;
