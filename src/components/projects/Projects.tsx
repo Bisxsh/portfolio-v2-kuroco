@@ -57,7 +57,6 @@ const ProjectsContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  overflow-x: hidden;
 
   .projects--subheading {
     margin-top: 10vh;

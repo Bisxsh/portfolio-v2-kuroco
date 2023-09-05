@@ -55,7 +55,7 @@ const PointerContainer = styled.div`
   @media (hover: none) {
     visibility: hidden;
   }
-  z-index: 10;
+  z-index: 30;
   .inner-circle {
     width: 12px;
     height: 12px;
