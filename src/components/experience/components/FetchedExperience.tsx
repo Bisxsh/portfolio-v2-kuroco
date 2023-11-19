@@ -26,18 +26,8 @@ const FetchedExperience = (props: Props) => {
     fetch(
       `${process.env.GATSBY_KUROCO_API_BASE_URL}experience/list?_output_format=json`
     )
-      .then((r) => {
-        console.log(r);
-        const json = r.json();
-        console.log(json);
-        return json;
-      })
-      .then((r) => {
-        console.log("Loaded");
-        console.log(r);
-        setData(r);
-      })
-      .catch((e) => console.log(e));
+      .then((r) => r.json())
+      .then((r) => setData(r));
   }, []);
 
   if (!data) return <div>Loading...</div>;

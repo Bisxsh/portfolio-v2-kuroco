@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SmallProject from "./SmallProject";
+import { StaticImage } from "gatsby-plugin-image";
 
 type Props = {};
 
