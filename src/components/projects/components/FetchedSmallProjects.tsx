@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SmallProject from "./SmallProject";
-import styled from "styled-components";
+import { StaticImage } from "gatsby-plugin-image";
 
 type Props = {};
 
@@ -17,16 +17,15 @@ const FetchedSmallProject = (props: Props) => {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <SmallProjectsContainer>
+    <>
       {data.list.map((p: any, i: number) => {
         return (
           <SmallProject
-            key={p.projectName}
             image={
               <img src={p.image.url} alt="" className="small_project--image" />
             }
             title={p.projectName}
-            technologies={p.technologies.split("\r\n")}
+            technologies={p.technologies.split("\n")}
             description={p.description}
             github={p.github ? p.github : undefined}
             figma={p.figma ? p.figma : undefined}
@@ -35,23 +34,8 @@ const FetchedSmallProject = (props: Props) => {
           />
         );
       })}
-    </SmallProjectsContainer>
+    </>
   );
 };
-
-const SmallProjectsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1, min(500px, 1fr));
-  place-items: center;
-  grid-gap: 20px;
-
-  @media screen and (min-width: 970px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media screen and (min-width: 1300px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
 
 export default FetchedSmallProject;

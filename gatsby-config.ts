@@ -1,9 +1,11 @@
 import type { GatsbyConfig } from "gatsby";
 
+require("dotenv").config();
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `portfolio-v2`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.bisesh.dev`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
